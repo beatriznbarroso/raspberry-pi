@@ -1,5 +1,18 @@
 import requests
 from django.shortcuts import render
+import datetime
+# from weather1 import getWeather
+
+   
+def index(request):
+    city_time = {
+        'current_hour' : datetime.datetime.now().strftime('%H:%M:%S'),
+        'week_day' : datetime.datetime.now().isoweekday(),
+        'datetime' : datetime.datetime.now()
+
+    }
+    weather = getWeather(request)
+    return render(request, 'index.html', context = {'city_time' : city_time, 'weather' : weather})
 
 def getWeekDayName(day_of_week):
     days_of_week = {
@@ -13,19 +26,23 @@ def getWeekDayName(day_of_week):
     }
     if day_of_week in days_of_week:
         return days_of_week.get(day_of_week)
-   
-def index(request):
-    url = 'http://worldtimeapi.org/api/timezone/{}'
-    region = '/America/Argentina/Salta'
+    else :
+        return "I have no clue what day of the week it is"
 
-    r = requests.get(url.format(region)).json()
+def getWeather(request):
+    city = 'Lisbon'
 
-    city_time = {
-        'day_of_year' : r['day_of_year'],
-        'day_of_week' : getWeekDayName(r['day_of_week']),
-        'datetime' : r['datetime']
+    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&appid=89b538f7c4e57f23da6886ac03629e15&units=metric'.format(
+        city)
+
+    res = requests.get(url)
+
+    data = res.json()
+    weather = {
+        'description': data['weather'][0]['description'],
+        'temp': data['main']['temp'],
+        'temp_min': data['main']['temp_min'],
+        'temp_max': data['main']['temp_max']
     }
 
-    context = {'city_time' : city_time}
-    return render(request, 'timezone/timezone.html', context)
-
+    return weather
