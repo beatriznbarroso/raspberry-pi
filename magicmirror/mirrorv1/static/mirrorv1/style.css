@@ -1,4 +1,19 @@
-.mirror {
+
+body {
     background-color: black;
 }
 
+.main-display {
+    color: white;
+    font-family: 'Montserrat';
+    font-weight: 600;
+}
+
+.display-numbers {
+    font-family: 'Open Sans';
+    padding: 0;
+}
+
+.display-numbers > h1 {
+    font-size: 7rem;
+}

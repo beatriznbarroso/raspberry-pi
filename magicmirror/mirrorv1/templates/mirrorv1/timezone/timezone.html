@@ -1,11 +1,15 @@
 <div>
-    <div>
-        {{city_time.current_hour}}
-    </div> 
-    <div>
-        {{city_time.week_day}}
+    <div class="display-numbers">
+        <h1>
+            {{city_time.current_hour}}
+        </h1> 
+        <h2>
+            {{city_time.datetime | date:"Y/m/d"}}
+        </h2>
+        <div>
+            {{city_time.week_day}}
+        </div>
     </div>
-    <div>
-        {{city_time.datetime | date:"Y/m/d"}}
-    </div>
+    
+  
 </div>

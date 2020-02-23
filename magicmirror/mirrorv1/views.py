@@ -7,7 +7,7 @@ import datetime
 def index(request):
     city_time = {
         'current_hour' : datetime.datetime.now().strftime('%H:%M:%S'),
-        'week_day' : datetime.datetime.now().isoweekday(),
+        'week_day' : getWeekDayName(datetime.datetime.now().isoweekday()),
         'datetime' : datetime.datetime.now()
 
     }
