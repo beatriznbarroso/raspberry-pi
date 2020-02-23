@@ -14,18 +14,19 @@ def index(request):
 
 def getWeekDayName(day_of_week):
     days_of_week = {
-        1 : 'Monday',
+        1: 'Monday',
         2: 'Tuesday',
-        3 : 'Wednesday',
-        4 : 'Thursday',
-        5 : 'Friday',
-        6 : 'Saturday',
-        7 : 'Sunday'
+        3: 'Wednesday',
+        4: 'Thursday',
+        5: 'Friday',
+        6: 'Saturday',
+        7: 'Sunday'
     }
     if day_of_week in days_of_week:
         return days_of_week.get(day_of_week)
-    else :
+    else:
         return "I have no clue what day of the week it is"
+
 
 def getWeather(request):
     city = 'Lisbon'
