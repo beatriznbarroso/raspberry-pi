@@ -1,8 +1,6 @@
 import requests
 from django.shortcuts import render
 import datetime
-# from weather1 import getWeather
-
    
 def index(request):
     city_time = {
@@ -42,7 +40,8 @@ def getWeather(request):
         'description': data['weather'][0]['description'],
         'temp': data['main']['temp'],
         'temp_min': data['main']['temp_min'],
-        'temp_max': data['main']['temp_max']
+        'temp_max': data['main']['temp_max'],
+        'icon': data['weather'][0]['icon']
     }
 
     return weather

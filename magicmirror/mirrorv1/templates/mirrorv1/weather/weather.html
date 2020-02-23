@@ -1,14 +1,13 @@
-<div>
+<div class="weather">
     <div>
-        {{weather.description}}
-    </div> 
-    <div>
-        {{weather.temp}}
+        <h3>{{weather.description|title}}</h3>
+        <img src="http://openweathermap.org/img/w/{{weather.icon}}.png"
+             alt="Weather icon">
     </div>
     <div>
-        {{weather.temp_min}}
+        Current Temperature : {{weather.temp}}ºC
     </div>
     <div>
-        {{weather.temp_max}}
+        Min: {{weather.temp_min}}, Max: {{weather.temp_max}}
     </div>
 </div>

@@ -6,14 +6,41 @@ body {
 .main-display {
     color: white;
     font-family: 'Montserrat';
-    font-weight: 600;
+    font-weight: 300;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
 }
 
 .display-numbers {
     font-family: 'Open Sans';
-    padding: 0;
+    padding: 0rem;
+    font-weight: 700;
 }
 
 .display-numbers > h1 {
-    font-size: 7rem;
+    font-size: 5rem;
+    margin: 0rem;
+}
+
+.display-numbers > h2 {
+    font-size: 2rem;
+    margin: 0rem;
+    font-weight: 400;
+}
+
+.weather {
+    float: right;
+    line-height: 23px;
+    padding: 1rem;
+    font-size: 1.25rem;
+}
+
+.weather > div {
+    display: flex;
+    padding: 0.1rem;
+}
+
+.weather > div > img {
+    width: 4rem;
 }
