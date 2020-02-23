@@ -1,19 +1,16 @@
 import requests
 from django.shortcuts import render
 import datetime
-# from weather1 import getWeather
-
-
+   
 def index(request):
     city_time = {
-        'current_hour': datetime.datetime.now().strftime('%H:%M:%S'),
-        'week_day': datetime.datetime.now().isoweekday(),
-        'datetime': datetime.datetime.now()
+        'current_hour' : datetime.datetime.now().strftime('%H:%M:%S'),
+        'week_day' : getWeekDayName(datetime.datetime.now().isoweekday()),
+        'datetime' : datetime.datetime.now()
 
     }
     weather = getWeather(request)
-    return render(request, 'index.html', context={'city_time': city_time, 'weather': weather})
-
+    return render(request, 'mirrorv1/index.html', context = {'city_time' : city_time, 'weather' : weather})
 
 def getWeekDayName(day_of_week):
     days_of_week = {
@@ -44,7 +41,8 @@ def getWeather(request):
         'description': data['weather'][0]['description'],
         'temp': data['main']['temp'],
         'temp_min': data['main']['temp_min'],
-        'temp_max': data['main']['temp_max']
+        'temp_max': data['main']['temp_max'],
+        'icon': data['weather'][0]['icon']
     }
 
     return weather
