@@ -1,11 +1,11 @@
 <div>
-    <div class="blue">
-        {{city_time.day_of_year}}
+    <div>
+        {{city_time.current_hour}}
+    </div> 
+    <div>
+        {{city_time.week_day}}
     </div>
-    <div class="blue">
-        {{city_time.day_of_week}}
-    </div>
-    <div class="blue">
-        {{city_time.datetime}}
+    <div>
+        {{city_time.datetime | date:"Y/m/d"}}
     </div>
 </div>
