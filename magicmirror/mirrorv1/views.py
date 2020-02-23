@@ -12,7 +12,7 @@ def index(request):
 
     }
     weather = getWeather(request)
-    return render(request, 'index.html', context = {'city_time' : city_time, 'weather' : weather})
+    return render(request, 'mirrorv1/index.html', context = {'city_time' : city_time, 'weather' : weather})
 
 def getWeekDayName(day_of_week):
     days_of_week = {

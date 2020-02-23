@@ -1,0 +1,11 @@
+{% load static %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'mirrorv1/style.css' %}">
+</head>
+<body>
+    <div class="mirror">
+        {% include 'mirrorv1/timezone/timezone.html' %}
+        {% include 'mirrorv1/weather/weather.html' %}    
+    </div>
+</body>
