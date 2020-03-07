@@ -1,16 +1,21 @@
 import requests
-from django.shortcuts import render
 import datetime
+from django.shortcuts import render
+from newsapi import NewsApiClient
+
    
 def index(request):
     city_time = {
         'current_hour' : datetime.datetime.now().strftime('%H:%M:%S'),
         'week_day' : getWeekDayName(datetime.datetime.now().isoweekday()),
         'datetime' : datetime.datetime.now()
-
     }
+    news = getNews()
     weather = getWeather(request)
-    return render(request, 'mirrorv1/index.html', context = {'city_time' : city_time, 'weather' : weather})
+    return render(request, 'mirrorv1/index.html', 
+    context = {'city_time' : city_time, 
+                'weather' : weather,
+                'news' : news})
 
 def getWeekDayName(day_of_week):
     days_of_week = {
@@ -46,3 +51,12 @@ def getWeather(request):
     }
 
     return weather
+
+def getNews() :
+    # Init
+    newsapi = NewsApiClient(api_key='8cef481256e4410fbacdad418e928efc')
+
+    top_headlines = newsapi.get_top_headlines(sources='bbc-news',
+                                            language='en',
+                                            page_size=3)
+    return top_headlines
