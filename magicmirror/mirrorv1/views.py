@@ -1,14 +1,16 @@
 import requests
-from django.shortcuts import render
 import datetime
+from django.shortcuts import render
+from newsapi import NewsApiClient
+
    
 def index(request):
     city_time = {
         'current_hour' : datetime.datetime.now().strftime('%H:%M:%S'),
         'week_day' : getWeekDayName(datetime.datetime.now().isoweekday()),
         'datetime' : datetime.datetime.now()
-
     }
+    getNews()
     weather = getWeather(request)
     return render(request, 'mirrorv1/index.html', context = {'city_time' : city_time, 'weather' : weather})
 
@@ -46,3 +48,26 @@ def getWeather(request):
     }
 
     return weather
+
+def getNews() :
+    # Init
+    newsapi = NewsApiClient(api_key='8cef481256e4410fbacdad418e928efc')
+
+    # /v2/top-headlines
+    top_headlines = newsapi.get_top_headlines(sources='bbc-news,the-verge',
+                                            language='en',
+                                            page_size=5)
+
+    # /v2/everything
+    # all_articles = newsapi.get_everything(q='bitcoin',
+    #                                     sources='bbc-news,the-verge',
+    #                                     domains='bbc.co.uk,techcrunch.com',
+    #                                     from_param='2017-12-01',
+    #                                     to='2017-12-12',
+    #                                     language='en',
+    #                                     sort_by='relevancy',
+    #                                     page=2)
+
+    # /v2/sources
+    # sources = newsapi.get_sources()
+    return top_headlines
