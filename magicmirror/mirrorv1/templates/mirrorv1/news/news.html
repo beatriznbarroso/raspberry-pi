@@ -1,0 +1,8 @@
+{% for headline in news.articles %}
+    <a href="{{headline.url}}" class="news-card">
+        <h3 class="news ma0 pa1 " style="background-image: url('{{headline.urlToImage}}');">
+            <b class="white-text">{{headline.title}}</b>
+        </h3>
+        <p class="description white-card black-text ma0 pa1">{{headline.description}}</p>
+    </a>    
+{% endfor %}

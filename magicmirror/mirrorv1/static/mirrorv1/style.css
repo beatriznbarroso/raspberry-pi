@@ -1,12 +1,36 @@
 
 body {
     background-color: black;
-}
-
-.main-display {
     color: white;
     font-family: 'Montserrat';
     font-weight: 300;
+}
+
+.ma0 {
+    margin: 0rem;
+}
+
+.mt2 {
+    margin-top: 2rem;
+}
+
+.pa1 {
+    padding: 1rem;
+}
+
+.black-text {
+    color: black;
+}
+
+.white-text {
+    color: white;
+}
+
+.white-card {
+    background-color: white;
+}
+
+.main-display {
     display: flex;
     justify-content: space-between;
     padding: 1rem;
@@ -44,3 +68,21 @@ body {
 .weather > div > img {
     width: 4rem;
 }
+
+.news-grid {
+    display: grid;
+    grid-template-rows: repeat(3,1fr);
+    grid-template-columns: repeat(1,1fr);
+    grid-gap: 1.5rem;
+}
+
+.news-card {
+    width: 22rem;
+    text-decoration: none;
+}
+
+.news {
+    background-size: cover;
+    height: 5rem;
+}
+
