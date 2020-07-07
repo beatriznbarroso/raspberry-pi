@@ -1,5 +1,5 @@
 {% for headline in news.articles %}
-    <a href="{{headline.url}}" class="news-card">
+    <a target="_blank" href="{{headline.url}}" class="news-card">
         <h3 class="news ma0 pa1 " style="background-image: url('{{headline.urlToImage}}');">
             <b class="white-text">{{headline.title}}</b>
         </h3>
